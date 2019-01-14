@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 
 class MyCustomInput extends Component {
 
-    increase() {
-        const {input: {value}} = this.props;
+    increase(value) {
         return value + 1;
     }
 
-    decrease() {
-        const {input: {value}} = this.props;
+    decrease(value) {
         return value > 1 ? value - 1 : 0;
     }
 
@@ -23,10 +21,10 @@ class MyCustomInput extends Component {
         <label>{label}</label>
         <div>
             <span>The current value is {value}.</span>
-            <button type="button" onClick={() => onChange(this.increase())}>
+            <button type="button" onClick={() => onChange(this.increase(value))}>
             Inc
             </button>
-            <button type="button" onClick={() => onChange(this.decrease())}>
+            <button type="button" onClick={() => onChange(this.decrease(value))}>
             Dec
             </button>
             {touched &&

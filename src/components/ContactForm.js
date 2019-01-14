@@ -28,9 +28,9 @@ class ContactForm extends Component {
     meta: { touched, error, warning }
   }) => (
     <div>
-      <label>{label}</label>
+      <label htmlFor={label}>{label}</label>
       <div>
-        <input {...input} placeholder={label} type={type} />
+        <input {...input} placeholder={label} type={type} id={label} />
         {touched &&
           ((error && <span>{error}</span>) ||
             (warning && <span>{warning}</span>))}
@@ -44,20 +44,16 @@ class ContactForm extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" component={this.renderField} type="text" required={true} />
+          <Field name="firstName" label="First Name" component={this.renderField} type="text" required={true} />
         </div>
         <div>
-          <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" component={this.renderField} type="text" />
+          <Field name="lastName" label="Last Name" component={this.renderField} type="text" />
         </div>
         <div>
-          <label htmlFor="age">Last Name</label>
-          <Field name="age" component={MyCustomInput} />
+          <Field name="age" label="Age" component={MyCustomInput} />
         </div>
         <div>
-          <label htmlFor="email">Email</label>
-          <Field name="email" component={this.renderField} type="email" />
+          <Field name="email" label="Email" component={this.renderField} type="email" />
         </div>
         <button type="submit">Submit</button>
       </form>
