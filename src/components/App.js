@@ -1,15 +1,11 @@
 import React from 'react';
 import './App.css';
 
-import Stories from './Stories';
-import SearchStories from './SearchStories';
+import AppRouter from './AppRouter';
 
 const App = () =>
   <div className="app">
-    <div className="interactions">
-      <SearchStories />
-    </div>
-    <Stories />
+    <AppRouter />
   </div>
 
 export default App;
