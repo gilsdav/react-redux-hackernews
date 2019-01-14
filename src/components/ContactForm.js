@@ -43,18 +43,10 @@ class ContactForm extends Component {
 
     return (
       <form onSubmit={handleSubmit}>
-        <div>
-          <Field name="firstName" label="First Name" component={this.renderField} type="text" required={true} />
-        </div>
-        <div>
-          <Field name="lastName" label="Last Name" component={this.renderField} type="text" />
-        </div>
-        <div>
-          <Field name="age" label="Age" component={MyCustomInput} />
-        </div>
-        <div>
-          <Field name="email" label="Email" component={this.renderField} type="email" />
-        </div>
+        <Field name="firstName" label="First Name" component={this.renderField} type="text" required={true} />
+        <Field name="lastName" label="Last Name" component={this.renderField} type="text" />
+        <Field name="age" label="Age" component={MyCustomInput} />
+        <Field name="email" label="Email" component={this.renderField} type="email" />
         <button type="submit">Submit</button>
       </form>
     );
