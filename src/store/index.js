@@ -1,16 +1,26 @@
 import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import rootSaga from '../sagas';
 
-const logger = createLogger();
+
 const saga = createSagaMiddleware();
+const logger = createLogger();
+
+console.log(process.env.NODE_ENV);
+
+const middlewares = [
+  saga,
+  ...(process.env.NODE_ENV !== 'production' ? [
+    logger
+  ]: [])
+];
 
 const store = createStore(
   rootReducer,
   undefined,
-  applyMiddleware(saga, logger)
+  applyMiddleware(...middlewares)
 );
 
 saga.run(rootSaga);
