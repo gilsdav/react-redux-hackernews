@@ -1,19 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Trans } from '@lingui/macro';
 
 import Stories from './Stories';
 import SearchStories from './SearchStories';
 import Map from './Map';
 import ContactPage from './ContactPage';
+import { i18n } from '../i18n';
 
 const Index = () => <div>
-<div className="interactions">
+    <div className="interactions">
       <SearchStories />
     </div>
-    <Stories /></div>;
+    <Stories />
+</div>;
 const About = () => <Map></Map>;
 const Users = () => <ContactPage></ContactPage>;
 const NoMatch = () => <h2>No Match</h2>;
+
+const switchLang = function(lang) {
+    i18n.activate(lang);
+}
 
 const AppRouter = () => (
   <Router>
@@ -21,13 +28,19 @@ const AppRouter = () => (
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/"><Trans>Home</Trans></Link>
           </li>
           <li>
-            <Link to="/about/">Map</Link>
+            <Link to="/about/"><Trans>Map</Trans></Link>
           </li>
           <li>
-            <Link to="/users/">Contact</Link>
+            <Link to="/users/"><Trans>Contact</Trans></Link>
+          </li>
+          <li>
+            <button onClick={() => switchLang('fr')}>FR</button>
+          </li>
+          <li>
+            <button onClick={() => switchLang('nl')}>NL</button>   
           </li>
         </ul>
       </nav>

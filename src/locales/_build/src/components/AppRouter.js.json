@@ -1,0 +1,26 @@
+{
+  "Home": {
+    "origin": [
+      [
+        "src/components/AppRouter.js",
+        25
+      ]
+    ]
+  },
+  "Map": {
+    "origin": [
+      [
+        "src/components/AppRouter.js",
+        28
+      ]
+    ]
+  },
+  "Contact": {
+    "origin": [
+      [
+        "src/components/AppRouter.js",
+        31
+      ]
+    ]
+  }
+}
