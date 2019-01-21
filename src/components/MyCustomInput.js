@@ -1,14 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class MyCustomInput extends Component {
+  static propTypes =  {
+    label: PropTypes.string.isRequired
+  };
+  static defaultProps = {
+    label: 'Label name'
+  };
 
-    increase(value) {
-        return value + 1;
-    }
+  increase(value) {
+      return value + 1;
+  }
 
-    decrease(value) {
-        return value > 1 ? value - 1 : 0;
-    }
+  decrease(value) {
+      return value > 1 ? value - 1 : 0;
+  }
 
   render() {
     const {

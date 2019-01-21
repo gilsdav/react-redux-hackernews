@@ -6,6 +6,7 @@
     "@lingui/react": "^3.0.0-3",
     "history": "^4.7.2",
     "openlayers": "^4.6.5",
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^6.0.0",
