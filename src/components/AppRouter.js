@@ -7,6 +7,8 @@ import SearchStories from './SearchStories';
 import Map from './Map';
 import ContactPage from './ContactPage';
 import { i18n } from '../i18n';
+import { doAddWorks } from '../actions/map';
+import { connect } from 'react-redux';
 
 const Index = () => <div>
     <div className="interactions">
@@ -22,7 +24,7 @@ const switchLang = function(lang) {
     i18n.activate(lang);
 }
 
-const AppRouter = () => (
+const AppRouter = ({ onAddWorks }) => (
   <Router>
     <div>
       <nav>
@@ -42,6 +44,9 @@ const AppRouter = () => (
           <li>
             <button onClick={() => switchLang('nl')}>NL</button>   
           </li>
+          <li>
+            <button onClick={() => onAddWorks(['coucou', 'hey'])}>RefreshMapValue</button>
+          </li>
         </ul>
       </nav>
 
@@ -56,4 +61,15 @@ const AppRouter = () => (
   </Router>
 );
 
-export default AppRouter;
+const mapDispatchToProps = (dispatch) => ({
+  onAddWorks: works => dispatch(doAddWorks(works)),
+});
+
+
+export default connect(
+  undefined,
+  mapDispatchToProps
+)(AppRouter);
+
+
+// export default AppRouter;

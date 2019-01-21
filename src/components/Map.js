@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as ol from 'openlayers';
 import 'openlayers/css/ol.css';
+import { getReadableWorks } from '../selectors/map';
+import { connect } from 'react-redux';
 
 class Map extends Component {
 
@@ -10,6 +12,7 @@ class Map extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         this.updateMap();
+        console.log('update');
     }
 
     initMap() {
@@ -31,7 +34,7 @@ class Map extends Component {
                 featuresLayer
             ],
             view: new ol.View({
-                center: [-11718716.28195593, 4869217.172379018], //Boulder, CO
+                center: [487907.65690432955, 6579390.890153458], //Boulder, CO
                 zoom: 13,
             })
         });
@@ -45,10 +48,31 @@ class Map extends Component {
         });
     }
 
+    getPolygon() {
+        const values = [
+            [487907.65690432955, 6579390.890153458],
+            [487105.06810733624, 6580384.571521165],
+            [487105.06810733624, 6580308.13449288],
+            [484429.7721173587, 6580996.067747446],
+            [483512.5277779378, 6580843.193690876],
+            [481983.7872122364, 6581148.941804016],
+            [480607.92070310505, 6583059.867511143],
+            [479919.98744853935, 6584894.356189984],
+            [478849.86905254837, 6584817.919161699],
+            [478238.3728262678, 6586652.407840541],
+            [476786.06928885134, 6586270.222699116],
+            [475563.0768362902, 6587340.341095107],
+            [474263.647355444, 6587646.089208247],
+            [473499.2770725932, 6588486.8965193825]
+        ];
+        const i = new Date().getTime() % 13;
+        return new ol.Feature(new ol.geom.Point(values[i]));
+    }
+
     updateMap() {
         this.state.featuresLayer.setSource(
             new ol.source.Vector({
-                features: this.props.routes
+                features: [this.getPolygon()]
             })
         );
     }
@@ -75,9 +99,25 @@ class Map extends Component {
 
     render() {
         return (
-            <div ref="mapContainer"></div>
+            <div>
+                <div ref="mapContainer"></div>
+                {JSON.stringify(this.props.works)}
+            </div>
         );
     }
 }
 
-export default Map;
+// const mapDispatchToProps = (dispatch) => ({
+//     onFetchStories: query => dispatch(doFetchStories(query)),
+//   });
+  
+  const mapStateToProps = state => ({
+    works: getReadableWorks(state),
+  });
+  
+  export default connect(
+    mapStateToProps
+  )(Map);
+
+
+// export default Map;

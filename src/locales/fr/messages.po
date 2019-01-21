@@ -13,14 +13,14 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/components/AppRouter.js:31
+#: src/components/AppRouter.js:39
 msgid "Contact"
 msgstr "Contact"
 
-#: src/components/AppRouter.js:25
+#: src/components/AppRouter.js:33
 msgid "Home"
 msgstr "Accueil"
 
-#: src/components/AppRouter.js:28
+#: src/components/AppRouter.js:36
 msgid "Map"
 msgstr "Carte"
