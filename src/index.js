@@ -5,6 +5,9 @@ import App from './components/App';
 import store from './store';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import registerHttpInterceptor from './httpInterceptor';
+
+registerHttpInterceptor();
 
 ReactDOM.render(
   <Provider store={store}>
